@@ -68,8 +68,8 @@ cgroup-2  cgroup.event_control   cgroup.sane_behavior  release_agent
 可以看出，在一个cgroup的目录下创建文件夹时，系统Kernel会自动把该文件夹标记为这个cgroup的子cgroup，它们会继承父cgroup的属性。
 
 几个文件功能说明：
-- tasks，标识该cgroup下面的进程ID。如果把一个进程ID写入了tasks文件，就是把该进程加入了这个cgroup中。
-- cgroup.procs 是树中当前cgroup中的进程组ID。如果是根节点，会包含所有的进程组ID。
+- tasks，当前cgroup中所有线程ID。如果把一个线程ID写入了tasks文件，就是把该进程加入了这个cgroup中。
+- cgroup.procs 是当前cgroup中的所有进程ID，也称为TGID (线程组ID),即线程组中第一个进程的PID。如果是根节点，会包含所有的线程组ID。
 - cgroup.clone_children，默认值为0。如果设置为1，子cgroup会继承父cgroup的cpuset配置。
 
 ## 往一个cgroup中添加和移动进程
